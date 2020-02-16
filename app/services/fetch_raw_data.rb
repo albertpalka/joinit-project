@@ -8,7 +8,7 @@ class FetchRawData
   end
 
   def call
-    data = HTTParty.get("#{@link}")
+    data = Faraday.get @link.to_s
     @model.create!(body: data.body)
   end
 end

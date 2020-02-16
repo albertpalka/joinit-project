@@ -4,7 +4,7 @@
 # to RawOffers model
 class FetchRawOffers
   def initialize(raw_data_model)
-    @raw_data_model = raw_data_model.last
+    @raw_data_model = raw_data_model
   end
 
   def call
@@ -12,7 +12,7 @@ class FetchRawOffers
     parsed_data = parse(raw_data_body)
     offers_ids = fetch_offers_ids(parsed_data)
     jobs_array = create_offers_array(offers_ids)
-    @raw_data_model.just_join_it_raw_offers.create!(body: jobs_array.to_s)
+    @raw_data_model.last.just_join_it_raw_offers.create!(body: jobs_array.to_s)
   end
 
   private
@@ -27,11 +27,8 @@ class FetchRawOffers
 
   def create_offers_array(job_offers_ids)
     arr = []
-    n = 0
     job_offers_ids.each do |id|
-      offer = HTTParty.get("https://justjoin.it/api/offers/#{id}")
-      puts n
-      n += 1
+      offer = Faraday.get "https://justjoin.it/api/offers/#{id}"
       arr << offer.body
     end
 
