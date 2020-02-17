@@ -25,6 +25,7 @@ gem 'rubocop', require: false
 gem 'httparty'
 gem 'pg_search'
 gem 'rspec'
+gem 'pagy'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
