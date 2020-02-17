@@ -10,22 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_215332) do
+ActiveRecord::Schema.define(version: 2020_02_17_174922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "just_join_it_parsed_offers", force: :cascade do |t|
-    t.string "title"
-    t.string "city"
-    t.string "company_name"
+    t.string "title", null: false
+    t.string "city", null: false
+    t.string "company_name", null: false
     t.string "company_url"
-    t.integer "salary_from"
-    t.integer "salary_to"
-    t.string "skills"
+    t.integer "salary_from", null: false
+    t.integer "salary_to", null: false
+    t.string "skills", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "just_join_it_raw_offers_id"
+    t.integer "just_join_it_raw_offer_id"
+    t.string "offer_url", null: false
   end
 
   create_table "just_join_it_raw_data", force: :cascade do |t|
@@ -41,4 +42,6 @@ ActiveRecord::Schema.define(version: 2020_02_15_215332) do
     t.integer "just_join_it_raw_datum_id"
   end
 
+  add_foreign_key "just_join_it_parsed_offers", "just_join_it_raw_offers"
+  add_foreign_key "just_join_it_raw_offers", "just_join_it_raw_data"
 end

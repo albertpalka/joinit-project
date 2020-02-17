@@ -1,25 +1,18 @@
 # frozen_string_literal: true
 
+RAW_DATA_MODEL = JustJoinIt::RawDatum.last
+
 # Fetches specific jobs offers and pushes them as array with strings
 # to RawOffers model
 class FetchRawOffers
-  # def initialize(raw_data_model)
-  #   @raw_data_model = raw_data_model
-  # end
-
-  def initialize(raw_data) #JustJoinIt::RawDatum.last
-    @raw_data = raw_data
-  end
-
   def call
-    raw_data_body = @raw_data.body
+    raw_data_body = RAW_DATA_MODEL.body
     parsed_data = parse(raw_data_body)
     offers_ids = fetch_offers_ids(parsed_data)
     jobs_array = create_offers_array(offers_ids)
-    # jobs.array.each do |offer|
-    #   @raw_data.just_join_it_raw_offers.create!(body: jobs_array.to_s)
-    # end
-
+    jobs_array.each do |offer|
+      RAW_DATA_MODEL.just_join_it_raw_offer.create!(body: offer)
+    end
   end
 
   private
