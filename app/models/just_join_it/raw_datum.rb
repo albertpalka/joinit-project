@@ -1,6 +1,6 @@
 module JustJoinIt
   class RawDatum < ApplicationRecord
-    has_many :raw_offers
+    has_many :parsed_offers
 
     validates :body, presence: true
   end
