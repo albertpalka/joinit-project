@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_174922) do
+ActiveRecord::Schema.define(version: 2020_02_19_194120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 2020_02_17_174922) do
     t.string "skills", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "just_join_it_raw_offer_id"
     t.string "offer_url", null: false
+    t.string "marker_icon", null: false
+    t.integer "raw_datum_id"
   end
 
   create_table "just_join_it_raw_data", force: :cascade do |t|
@@ -35,13 +36,5 @@ ActiveRecord::Schema.define(version: 2020_02_17_174922) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "just_join_it_raw_offers", force: :cascade do |t|
-    t.string "body", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "just_join_it_raw_datum_id"
-  end
-
-  add_foreign_key "just_join_it_parsed_offers", "just_join_it_raw_offers"
-  add_foreign_key "just_join_it_raw_offers", "just_join_it_raw_data"
+  add_foreign_key "just_join_it_parsed_offers", "just_join_it_raw_data", column: "raw_datum_id"
 end
