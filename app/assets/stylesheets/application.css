@@ -19,7 +19,20 @@
  body {
    font-family: Roboto, sans-serif;
    width: 100%;
+   text-align: center;
  }
+
+form {
+  padding: 20px 0;
+}
+
+.pagination {
+  padding-bottom: 30px;
+}
+
+.author {
+  padding-top: 10px;
+}
 /*
  .nav {
   margin: 0 auto;
