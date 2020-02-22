@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_200347) do
+ActiveRecord::Schema.define(version: 2020_02_22_221228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +37,10 @@ ActiveRecord::Schema.define(version: 2020_02_22_200347) do
   end
 
   create_table "no_fluff_jobs_parsed_offers", force: :cascade do |t|
-    t.string "body", null: false
+    t.string "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "raw_datum_id"
-    t.bigint "no_fluff_jobs_raw_datum_id", null: false
-    t.index ["no_fluff_jobs_raw_datum_id"], name: "index_no_fluff_jobs_parsed_offers_on_no_fluff_jobs_raw_datum_id"
   end
 
   create_table "no_fluff_jobs_raw_data", force: :cascade do |t|
@@ -52,5 +50,4 @@ ActiveRecord::Schema.define(version: 2020_02_22_200347) do
   end
 
   add_foreign_key "just_join_it_parsed_offers", "just_join_it_raw_data", column: "raw_datum_id"
-  add_foreign_key "no_fluff_jobs_parsed_offers", "no_fluff_jobs_raw_data"
 end

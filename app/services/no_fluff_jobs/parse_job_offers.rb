@@ -7,7 +7,7 @@ module NoFluffJobs
       parsed_offers = parse(offers_body)
       offers_ids = fetch_offers_ids(parsed_offers)
       jobs_details = fetch_jobs_details(offers_ids)
-      jobs_details.each do |offer|
+      jobs_details.a.each do |offer|
         MODEL.parsed_offers.create!(body: offer)
       end
     end
@@ -23,11 +23,13 @@ module NoFluffJobs
     end
 
     def fetch_jobs_details(offers_ids)
-      offers_ids.map do |id|
+      a = []
+      offers_ids.each do |id|
         offer = Faraday.get "https://nofluffjobs.com/api/posting/#{id}"
-        offer.body
+        a << offer.body
         sleep 1
       end
+      a
     end
   end
 end
