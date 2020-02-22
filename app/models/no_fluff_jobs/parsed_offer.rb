@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
-module JustJoinIt
+module NoFluffJobs
   class ParsedOffer < ApplicationRecord
-    belongs_to :raw_datum
-
     validates :body, presence: true
+
+    belongs_to :raw_datum
   end
 end
