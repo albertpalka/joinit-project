@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_221228) do
+ActiveRecord::Schema.define(version: 2020_02_23_105010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bulldog_jobs_parsed_offers", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "body"
+    t.integer "raw_datum_id"
+  end
+
+  create_table "bulldog_jobs_raw_data", force: :cascade do |t|
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "just_join_it_parsed_offers", force: :cascade do |t|
     t.string "title", null: false
