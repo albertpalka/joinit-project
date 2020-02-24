@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_23_105010) do
+ActiveRecord::Schema.define(version: 2020_02_24_081029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2020_02_23_105010) do
   create_table "bulldog_jobs_parsed_offers", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "body"
     t.integer "raw_datum_id"
+    t.jsonb "body"
   end
 
   create_table "bulldog_jobs_raw_data", force: :cascade do |t|

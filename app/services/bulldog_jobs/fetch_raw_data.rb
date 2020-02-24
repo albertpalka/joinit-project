@@ -33,7 +33,7 @@ module BulldogJobs
         links << raw_body.xpath("//ul[@class='results-list list-unstyled content']//li//a//@href").map(&:value)
       end
 
-      links.flatten
+      links.flatten.uniq.delete_if { |x| x == "#subscribeModal" }
     end
   end
 end
