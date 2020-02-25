@@ -3,7 +3,7 @@ class OffersController < ApplicationController
 
   def index
     if params[:skills]
-      @pagy, @offer = pagy(JustJoinIt::RawDatum.last
+      @pagy, @offer = pagy(JustJoinIt::RawDatum.first
                                                .parsed_offers
                                                .search_full_text(params[:skills]), items: 50)
 
