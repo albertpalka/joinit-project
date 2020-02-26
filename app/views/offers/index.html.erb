@@ -1,4 +1,5 @@
 <h1>Searchable jobs from all popular IT job sites in one place</h1>
+<h2>CURRENTLY OFFLINE DUE TO DATABASE MIGRATION AND APPLICATION FIX.</h2>
 
 <%= form_tag(offers_index_path method: :get) do %>
   Search by Skills and City <%= text_field_tag :skills, params[:skills], placeholder: "eg. Rails Warszawa" %>
@@ -6,28 +7,5 @@
   <p class="author">Created by <a href="https://www.linkedin.com/in/albertpalka/">Albert Palka</a></p>
   <p><%= link_to "View Skills List", "offers/skills", target: :_blank %></p>
 <% end %>
-
-<%== pagy_nav(@pagy) %>
-
-<table>
-    <thead>
-    <tr>
-      <th>Company</th>
-      <th>Offer Link</th>
-      <th>City</th>
-      <th>Required Skills</th>
-    </tr>
-    </thead>
-    <tbody>
-      <% @offer.each do |o| %>
-        <tr>
-          <td><b><%= o.company_name %></b></td>
-          <td><%= link_to "#{o.title}", "#{o.offer_url}" %></td>
-          <td><%= o.city %></td>
-          <td><%= o.skills %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 
 
