@@ -1,11 +1,5 @@
 <h1>Searchable jobs from all popular IT job sites in one place</h1>
-<h2>CURRENTLY OFFLINE DUE TO DATABASE MIGRATION AND APPLICATION FIX.</h2>
+<h2>CURRENTLY OFFLINE DUE TO DATABASE MIGRATION AND APPLICATION FIXES.</h2>
 
-<%= form_tag(offers_index_path method: :get) do %>
-  Search by Skills and City <%= text_field_tag :skills, params[:skills], placeholder: "eg. Rails Warszawa" %>
-  <%= submit_tag 'Search', name: nil %>
-  <p class="author">Created by <a href="https://www.linkedin.com/in/albertpalka/">Albert Palka</a></p>
-  <p><%= link_to "View Skills List", "offers/skills", target: :_blank %></p>
-<% end %>
 
 
