@@ -2,11 +2,12 @@ class OffersController < ApplicationController
 
   def index
     if params[:title]
-      @offers = Offer.order('RANDOM()')
+      @offers = Offer.with_salary
+                     .order('RANDOM()')
                      .search_full_text(params[:title])
                      .paginate(page: params[:page], per_page: 40)
     else
-      @offers = Offer.all
+      @offers = Offer.with_salary
                      .order('RANDOM()')
                      .paginate(page: params[:page], per_page: 40)
     end

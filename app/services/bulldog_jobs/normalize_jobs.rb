@@ -1,6 +1,6 @@
 module BulldogJobs
   class NormalizeJobs
-    # MODEL = BulldogJobs::RawDatum.last.parsed_offers
+    MODEL = BulldogJobs::RawDatum.last.parsed_offers
 
     def call
       MODEL.each do |raw_offer|
