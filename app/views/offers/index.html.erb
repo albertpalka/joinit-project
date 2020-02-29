@@ -1,6 +1,11 @@
 <h1>Searchable jobs from all popular IT job sites in one place</h1>
 
+<%= form_tag(offers_index_path method: :get) do %>
+    Search by Title <%= text_field_tag :title, params[:title], placeholder: "Rails, Kubernetes, Git" %>
+    <%= submit_tag 'Search', name: nil %> <br>Created by <a href="https://www.linkedin.com/in/albertpalka/">Albert Palka</a>
+  <% end %>
 
+  <%= will_paginate @offers %>
 
 <table>
     <thead>

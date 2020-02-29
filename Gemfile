@@ -27,6 +27,7 @@ gem 'pg_search'
 gem 'rspec'
 gem 'awesome_print'
 gem 'nokogiri'
+gem 'will_paginate'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
