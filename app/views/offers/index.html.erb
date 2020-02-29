@@ -1,5 +1,27 @@
 <h1>Searchable jobs from all popular IT job sites in one place</h1>
-<h2>CURRENTLY OFFLINE DUE TO DATABASE MIGRATION AND APPLICATION FIXES.</h2>
+
+
+
+<table>
+    <thead>
+    <tr>
+      <th>Company</th>
+      <th>Offer</th>
+      <th>City</th>
+      <th>Salary</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @offers.each do |o| %>
+        <tr>
+          <td><b><%= o.company %></b></td>
+          <td><%= link_to "#{o.title}", "#{o.link}?utm_source=joinly&utm_medium=on_site_link&utm_campaign=jobs_agreagator" %></td>
+          <td><%= o.city %></td>
+          <td><%= o.salary %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 
 

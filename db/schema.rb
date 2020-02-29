@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_29_142409) do
+ActiveRecord::Schema.define(version: 2020_02_29_152622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(version: 2020_02_29_142409) do
 
   create_table "no_fluff_jobs_raw_data", force: :cascade do |t|
     t.string "body", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.string "company"
+    t.string "title"
+    t.string "link"
+    t.string "city"
+    t.string "salary"
+    t.string "job_board"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -25,7 +25,6 @@ gem 'rubocop', require: false
 gem 'faraday'
 gem 'pg_search'
 gem 'rspec'
-gem 'pagy'
 gem 'awesome_print'
 gem 'nokogiri'
 
