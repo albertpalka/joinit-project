@@ -5,7 +5,7 @@
     <%= submit_tag 'Search', name: nil %> <br>Created by <a href="https://www.linkedin.com/in/albertpalka/">Albert Palka</a>
   <% end %>
 
-  <%= will_paginate @offers %>
+ <%= will_paginate @offers, params: {title: params[:title]} %>
 
 <table>
     <thead>
