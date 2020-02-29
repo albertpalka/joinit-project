@@ -5,7 +5,6 @@ require 'open-uri'
 module BulldogJobs
   # Fetches Raw Data from main offers page. Example: https://bulldogjob.com/companies/jobs?page=1
 
-  # n.xpath("//ul[@class='results-list list-unstyled content']//li//a//@href").map(&:value)
   class FetchRawData
     START_PAGE = 'https://bulldogjob.com/companies/jobs'
     MODEL = BulldogJobs::RawDatum
@@ -18,9 +17,8 @@ module BulldogJobs
 
     private
 
-    def fetch_jobs_pages(page)
-      page_body = Nokogiri::HTML(open(START_PAGE))
-
+    def fetch_jobs_pages(start_page)
+      page_body = Nokogiri::HTML(open(start_page))
       # We only receive slugs here: /companies/jobs?mode=searchbar&page=2
       page_body.xpath("//ul[@class='pagination']//li//a//@href").map(&:value)
     end
@@ -30,7 +28,8 @@ module BulldogJobs
       pages.each do |jobs_link|
         page = "https://bulldogjob.com#{jobs_link}"
         raw_body = Nokogiri::HTML(open(page))
-        links << raw_body.xpath("//ul[@class='results-list list-unstyled content']//li//a//@href").map(&:value)
+        links << raw_body.xpath("//ul[@class='results-list list-unstyled content']//li//a//@href")
+                         .map(&:value)
       end
 
       links.flatten.uniq.delete_if { |x| x == "#subscribeModal" }
