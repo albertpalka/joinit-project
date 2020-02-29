@@ -1,5 +1,32 @@
 <h1>Searchable jobs from all popular IT job sites in one place</h1>
-<h2>CURRENTLY OFFLINE DUE TO DATABASE MIGRATION AND APPLICATION FIXES.</h2>
+
+<%= form_tag(offers_index_path method: :get) do %>
+    Search by Title <%= text_field_tag :title, params[:title], placeholder: "Rails, Kubernetes, Git" %>
+    <%= submit_tag 'Search', name: nil %> <br>Created by <a href="https://www.linkedin.com/in/albertpalka/">Albert Palka</a>
+  <% end %>
+
+ <%= will_paginate @offers, params: {title: params[:title]} %>
+
+<table>
+    <thead>
+    <tr>
+      <th>Company</th>
+      <th>Offer</th>
+      <th>City</th>
+      <th>Salary</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @offers.each do |o| %>
+        <tr>
+          <td><b><%= o.company %></b></td>
+          <td><%= link_to "#{o.title}", "#{o.link}?utm_source=joinly&utm_medium=on_site_link&utm_campaign=jobs_agreagator" %></td>
+          <td><%= o.city %></td>
+          <td><%= o.salary %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
 
 

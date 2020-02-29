@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NoFluffJobs
   class ParseJobOffers
     MODEL = NoFluffJobs::RawDatum.last
@@ -6,9 +8,12 @@ module NoFluffJobs
       offers_body = MODEL.body
       parsed_offers = parse(offers_body)
       offers_ids = fetch_offers_ids(parsed_offers)
-      jobs_details = fetch_jobs_details(offers_ids)
-      jobs_details.a.each do |offer|
-        MODEL.parsed_offers.create!(body: offer)
+      MODEL.parsed_offers.transaction do
+        offers_ids.each do |id|
+          offer = Faraday.get "https://nofluffjobs.com/api/posting/#{id}"
+          parsed_offer = JSON.parse(offer.body)
+          MODEL.parsed_offers.create!(body: parsed_offer)
+        end
       end
     end
 
@@ -20,16 +25,6 @@ module NoFluffJobs
 
     def fetch_offers_ids(offers)
       offers['postings'].map { |o| o['id'] }
-    end
-
-    def fetch_jobs_details(offers_ids)
-      a = []
-      offers_ids.each do |id|
-        offer = Faraday.get "https://nofluffjobs.com/api/posting/#{id}"
-        a << offer.body
-        sleep 1
-      end
-      a
     end
   end
 end

@@ -71,7 +71,7 @@ td, th {
   padding: 6px;
   border: 1px solid #ccc;
   text-align: left;
-  white-space: nowrap;
+  white-space: wrap;
   text-emphasis: wrap;
   max-width: 20%;
 }
