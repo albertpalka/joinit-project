@@ -1,6 +1,6 @@
 module JustJoinIt
   class NormalizeJobs
-    MODEL = JustJoinIt::RawDatum.last.parsed_offers
+    # MODEL = JustJoinIt::RawDatum.last.parsed_offers
 
     def call
       MODEL.each do |raw_offer|

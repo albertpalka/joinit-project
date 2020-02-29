@@ -1,6 +1,6 @@
 module NoFluffJobs
   class NormalizeJobs
-    MODEL = NoFluffJobs::RawDatum.last.parsed_offers
+    # MODEL = NoFluffJobs::RawDatum.last.parsed_offers
 
     def call
       MODEL.each do |raw_offer|
