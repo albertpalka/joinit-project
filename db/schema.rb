@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_29_152622) do
+ActiveRecord::Schema.define(version: 2020_03_01_124127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_02_29_152622) do
     t.string "job_board"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "stale", default: false, null: false
   end
 
   add_foreign_key "just_join_it_parsed_offers", "just_join_it_raw_data", column: "raw_datum_id"

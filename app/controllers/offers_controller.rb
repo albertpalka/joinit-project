@@ -8,16 +8,19 @@ class OffersController < ApplicationController
                      .paginate(page: params[:page], per_page: 40)
     elsif params[:city]
       @offers = Offer.with_salary
+                     .current_offers
                      .order('RANDOM()')
                      .search_full_text(params[:city])
                      .paginate(page: params[:page], per_page: 40)
     elsif params[:title] && params[:city]
       @offers = Offer.with_salary
+                     .current_offers
                      .order('RANDOM()')
                      .search_full_text(params[:title, :city])
                      .paginate(page: params[:page], per_page: 40)
     else
       @offers = Offer.with_salary
+                     .current_offers
                      .order('RANDOM()')
                      .paginate(page: params[:page], per_page: 40)
     end
