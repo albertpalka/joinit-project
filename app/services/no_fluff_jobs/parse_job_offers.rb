@@ -13,6 +13,7 @@ module NoFluffJobs
           offer = Faraday.get "https://nofluffjobs.com/api/posting/#{id}"
           parsed_offer = JSON.parse(offer.body)
           MODEL.parsed_offers.create!(body: parsed_offer)
+          sleep 1
         end
       end
     end

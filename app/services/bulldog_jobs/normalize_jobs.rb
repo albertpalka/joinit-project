@@ -14,7 +14,7 @@ module BulldogJobs
 
         Offer.create!( company: offer_body['company'],
                        title: offer_body['title'],
-                       link: "https://justjoin.it/offers/#{offer_body['company_name']}",
+                       link: "#{offer_body['link']}",
                        city: offer_body['city'],
                        salary: salary,
                        job_board: 'BulldogJob')

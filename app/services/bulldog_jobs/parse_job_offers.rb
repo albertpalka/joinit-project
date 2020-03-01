@@ -9,6 +9,7 @@ module BulldogJobs
         body_parsed.each do |job|
           job_hash = fetch_offer_body(job)
           RAW_DATA_MODEL.parsed_offers.create!(body: job_hash)
+          sleep 1
         end
       end
     end
