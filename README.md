@@ -1,8 +1,13 @@
 # README
 
-## Naming Convention
+## Supported Job Boards
+1. JustJoinIt
+2. No Fluff Jobs
+3. Bulldogjob
 
-* We use RawDatum for Table with Raw Data pulled from a job board (general offers list): __*JustJoinItRawData*__
-* We use RawOffer for Table with Raw Data pulled from a job board for a specific offer: __*JustJoinItRawOffer*__
-* We use ParsedOffer for Table with Raw Data pulled from a job board for a specific offer: __*JustJoinItParsedOffer*__
-* Main Table to store normalized job offers for all supported job boards: __NormalizedOffer__
+## Setup
+
+1. bundle
+2. rails db:create
+3. rails db:migrate
+4. rake normalize_data (fetches all current available jobs)
