@@ -1,0 +1,32 @@
+<h1>Searchable jobs from all popular IT job sites in one place</h1>
+
+<%= form_tag(offers_index_path method: :get) do %>
+    Search by Offer Title and City <%= text_field_tag :title, params[:title], placeholder: "Rails Warszawa" %>
+    <%= submit_tag 'Search', name: nil %> <br>Created by <a href="https://www.linkedin.com/in/albertpalka/">Albert Palka</a>
+  <% end %>
+
+ <%= will_paginate @offers, params: {title: params[:title], city: params[:city]} %>
+
+<table>
+    <thead>
+    <tr>
+      <th>Company</th>
+      <th>Offer</th>
+      <th>City</th>
+      <th>Salary</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @offers.each do |o| %>
+        <tr>
+          <td><b><%= o.company %></b></td>
+          <td><%= link_to "#{o.title}", "#{o.link}?utm_source=joinly&utm_medium=on_site_link&utm_campaign=jobs_agreagator" %></td>
+          <td><%= o.city %></td>
+          <td><%= o.salary %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+
