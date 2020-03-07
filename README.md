@@ -10,4 +10,4 @@
 1. bundle
 2. rails db:create
 3. rails db:migrate
-4. rake normalize_data (fetches all current available jobs) IMPORTANT: Might not work as expected. You'll have to debug or run each service separately.
+4. rake normalize_data (fetches all currently available jobs) IMPORTANT: Might not work as expected. You'll have to debug or run each service separately.
